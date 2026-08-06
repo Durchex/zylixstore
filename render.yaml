@@ -1,0 +1,32 @@
+# Render Blueprint for Zylixstore.
+#
+# Import: Render dashboard -> New -> Blueprint -> select this repo.
+# This provisions a free Postgres database and a free web service, wires
+# DATABASE_URL between them automatically, and generates a random
+# SEED_SECRET you can find in the service's Environment tab afterwards
+# (used to trigger GET /api/seed?secret=<value> once, to populate sample
+# data — see README/PR description for details).
+
+databases:
+  - name: zylixstore-postgres
+    databaseName: zylixstore
+    user: zylixstore
+    plan: free
+    postgresMajorVersion: "16"
+
+services:
+  - type: web
+    name: zylixstore
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run render-build
+    startCommand: npm run start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        fromDatabase:
+          name: zylixstore-postgres
+          property: connectionString
+      - key: SEED_SECRET
+        generateValue: true
