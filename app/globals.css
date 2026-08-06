@@ -1,2 +1,16 @@
-@tailwind base; @tailwind components; @tailwind utilities;
-@media(max-width:850px){.header{gap:20px}.header-actions button:not(.cart){display:none}nav{overflow:auto;gap:22px}.hero{grid-template-columns:1.05fr .95fr;padding-left:6vw}.hero-copy{padding-top:65px}.tablet{left:120px;transform:rotate(8deg) scale(.75);transform-origin:left top}.phone{left:45px;transform:rotate(-10deg) scale(.85);transform-origin:top}.trust{padding:0 6vw}.trust>div{padding-left:30px}.categories,.products{grid-template-columns:repeat(2,1fr)}.newsletter{margin:0 24px 50px}.footer-top{grid-template-columns:2fr 1fr 1fr}}@media(max-width:600px){.topbar span:last-child,.search,.hero-visual{display:none}.header{height:68px;padding:0 20px;justify-content:space-between}.header-actions{gap:10px}nav{padding:0 20px;height:42px}.hero{display:block;min-height:450px;padding:0 25px}.hero-copy{padding:68px 0 45px}.hero h1{font-size:48px}.trust{grid-template-columns:1fr 1fr;gap:18px;padding:22px 25px}.trust>div{border:0}.section{padding:58px 20px}.section-heading{align-items:flex-start}.section-heading>a,.tabs{display:none}.categories{grid-template-columns:1fr 1fr;gap:10px}.category{height:125px;padding:16px}.cat-icon{font-size:32px}.products{gap:12px}.product-image{height:190px}.product h3{font-size:12px}.deal{display:block;padding:0 25px;min-height:490px}.deal-copy{padding:58px 0 0}.deal h2{font-size:43px}.deal-art{height:190px;margin-top:8px}.headphones{font-size:180px;top:10px;left:43px}.deal-tag{right:25px;top:35px;width:85px;height:85px}.deal-tag strong{font-size:22px}.brands{padding:50px 20px}.brands>div{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.newsletter{margin:0 20px 35px;padding:35px 25px;display:block}.newsletter form{margin-top:25px;grid-template-columns:1fr}.newsletter input{height:42px}.footer-top{grid-template-columns:1fr 1fr;gap:35px}.footer-top>div:first-child{grid-column:1/-1}.footer-bottom{display:block;line-height:2.1}.footer-bottom span{display:block}.floating-card{display:none}}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #05030a;
+}
+
+::selection {
+  background-color: #c026d3;
+  color: #ffffff;
+}
