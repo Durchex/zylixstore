@@ -9,6 +9,7 @@
 /build
 
 # local environment files
+.env
 .env*.local
 
 # debug
@@ -18,3 +19,10 @@ pnpm-debug.log*
 
 # TypeScript
 *.tsbuildinfo
+
+# Prisma
+/app/generated/prisma
+/*.db
+/*.db-journal
+/prisma/*.db
+/prisma/*.db-journal
