@@ -22,7 +22,3 @@ pnpm-debug.log*
 
 # Prisma
 /app/generated/prisma
-/*.db
-/*.db-journal
-/prisma/*.db
-/prisma/*.db-journal
