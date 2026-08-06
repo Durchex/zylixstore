@@ -1,32 +1,25 @@
-# Render Blueprint for Zylixstore.
+# Render Blueprint for Zylixstore (zylix-main's apps/web UI, served standalone).
+#
+# This is a pure frontend: it proxies /api/* requests to a separately
+# deployed Zylix API (apps/api from the zylix-main repo — see that repo's
+# own render.yaml to deploy it). After importing this blueprint, set
+# API_URL in the web service's Environment tab to that API's URL.
 #
 # Import: Render dashboard -> New -> Blueprint -> select this repo.
-# This provisions a free Postgres database and a free web service, wires
-# DATABASE_URL between them automatically, and generates a random
-# SEED_SECRET you can find in the service's Environment tab afterwards
-# (used to trigger GET /api/seed?secret=<value> once, to populate sample
-# data — see README/PR description for details).
-
-databases:
-  - name: zylixstore-postgres
-    databaseName: zylixstore
-    user: zylixstore
-    plan: free
-    postgresMajorVersion: "16"
 
 services:
   - type: web
     name: zylixstore
     runtime: node
     plan: free
-    buildCommand: npm install && npm run render-build
+    buildCommand: npm install && npm run build
     startCommand: npm run start
     envVars:
       - key: NODE_ENV
         value: production
-      - key: DATABASE_URL
-        fromDatabase:
-          name: zylixstore-postgres
-          property: connectionString
-      - key: SEED_SECRET
-        generateValue: true
+      # Set this to your deployed Zylix API's base URL (e.g.
+      # https://zylix-api.onrender.com) once it's live.
+      - key: API_URL
+        sync: false
+      - key: NEXT_PUBLIC_API_URL
+        sync: false
